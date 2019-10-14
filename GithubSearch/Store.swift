@@ -16,8 +16,9 @@ protocol Action {
 typealias Reducer<State, Mutation> = (inout State, Mutation) -> Void
 
 final class Store<AppState, AppAction: Action>: ObservableObject {
+    // point: read only
     @Published private(set) var state: AppState
-
+    // Generally, reducer or composition of reducers is the single place where your app mutates the state.
     private let appReducer: Reducer<AppState, AppAction.Mutation>
     private var cancellables: Set<AnyCancellable> = []
 

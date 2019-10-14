@@ -17,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        let store = Store<AppState, AppAction>(initialState: AppState(), appReducer: appReducer)
+        let appState: AppState = AppState(searchState: SearchState())
+        let store = Store<AppState, AppAction>(initialState: appState, appReducer: appReducer)
         let window = UIWindow(windowScene: scene)
         window.rootViewController = UIHostingController(
             rootView: SearchContainerView()

@@ -8,6 +8,38 @@
 import SwiftUI
 import Combine
 
+// The main idea is dividing your views into two types: Container Views and Rendering Views. The Rendering View is responsible for drawing the content, and that’s all. So basically it should not store the state or handle lifecycle events. It usually renders the data which you pass via the init method.
+
+// Container View, on another hand, is responsible for handling lifecycle events and providing the functions/closures to a Rendering View which it can use as user input handlers. Let’s take a look at a simple example.
+
+// MARK: - ライフサイクルイベントやfunctions/closuresを提供する
+
+struct SearchContainerView: View {
+    @EnvironmentObject var store: Store<AppState, AppAction>
+    @State private var query: String = "Swift"
+
+    var body: some View {
+//        SearchView(
+//            query: $query,
+//            repos: store.state.searchResult,
+//            onCommit: fetch
+//        ).onAppear(perform: fetch)
+        SearchView(
+            query: $query,
+            repos: store.state.searchState.searchResult,
+            onCommit: fetch
+        ).onAppear(perform: fetch)
+
+    }
+
+    private func fetch() {
+        store.send(.search(action: .search(query: query)))
+//        store.send(.search(query: query))
+    }
+}
+
+// MARK: - Reducerやライフサイクルを仕組みを意識しないPureなレイアウト部分
+
 struct RepoRow: View {
     let repo: Repo
 
@@ -23,22 +55,6 @@ struct RepoRow: View {
     }
 }
 
-struct SearchContainerView: View {
-    @EnvironmentObject var store: Store<AppState, AppAction>
-    @State private var query: String = "Swift"
-
-    var body: some View {
-        SearchView(
-            query: $query,
-            repos: store.state.searchResult,
-            onCommit: fetch
-        ).onAppear(perform: fetch)
-    }
-
-    private func fetch() {
-        store.send(.search(query: query))
-    }
-}
 
 struct SearchView : View {
     @Binding var query: String
