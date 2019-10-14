@@ -1,5 +1,5 @@
 //
-//  UserImage.swift
+//  ImageFetcher.swift
 //  GithubSearch
 //
 //  Created by Masanao Imai on 2019/10/14.
@@ -11,23 +11,23 @@ import Combine
 
 // original code is
 // https://github.com/ra1028/SwiftUI-Combine
-class UserImageFetcher: ObservableObject {
-    @Published private(set) var userImages = [User: UIImage]()
+class ImageFetcher: ObservableObject {
+    @Published private(set) var images = [String: UIImage]()
 
-    func fetchImage(for user: User) {
-        guard case .none = userImages[user] else {
+    func fetch(key id: String, path: URL) {
+        guard case .none = images[id] else {
             // Skip if this fetcher already has it as cache
             print("I have already cache this image.")
             return
         }
 
-        let request = URLRequest(url: user.avatar_url)
+        let request = URLRequest(url: path)
         _ = URLSession.shared.dataTaskPublisher(for: request)
             .map { UIImage(data: $0.data) }
             .replaceError(with: nil)
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] image in
-                self?.userImages[user] = image
+                self?.images[id] = image
             })
     }
 
