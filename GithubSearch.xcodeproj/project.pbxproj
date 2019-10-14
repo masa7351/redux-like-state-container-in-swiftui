@@ -23,6 +23,7 @@
 		446A41E223549B5A003B6153 /* UserReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A41E123549B5A003B6153 /* UserReducer.swift */; };
 		446A41E423549DE7003B6153 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A41E323549DE7003B6153 /* UserListView.swift */; };
 		446A41E82354A452003B6153 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A41E72354A452003B6153 /* ContentView.swift */; };
+		446A41EA2354B350003B6153 /* UserImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A41E92354B350003B6153 /* UserImageFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		446A41E123549B5A003B6153 /* UserReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReducer.swift; sourceTree = "<group>"; };
 		446A41E323549DE7003B6153 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		446A41E72354A452003B6153 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		446A41E92354B350003B6153 /* UserImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				446A41E323549DE7003B6153 /* UserListView.swift */,
+				446A41E92354B350003B6153 /* UserImageFetcher.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				446A41E423549DE7003B6153 /* UserListView.swift in Sources */,
 				1C59D32322A702B200049F5C /* AppDelegate.swift in Sources */,
 				446A41E023549AD3003B6153 /* RepoReducer.swift in Sources */,
+				446A41EA2354B350003B6153 /* UserImageFetcher.swift in Sources */,
 				446A41E82354A452003B6153 /* ContentView.swift in Sources */,
 				1CC8AF99232F4CF3003758CB /* App.swift in Sources */,
 				1C59D32522A702B200049F5C /* SceneDelegate.swift in Sources */,

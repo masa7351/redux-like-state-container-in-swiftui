@@ -10,11 +10,14 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var store: Store<AppState, AppAction>
+    // NOTE: This is not the correct Redux architecture.
+    @ObservedObject var userImageFetcher = UserImageFetcher()
     @State private var query: String = "Swift"
 
     var body: some View {
         ResultListView(
             query: $query,
+            userImageFetcher: userImageFetcher,
             repos: store.state.repoState.searchResult,
             users: store.state.userState.searchResult,
             onCommit: fetch
@@ -29,6 +32,7 @@ struct ContentView: View {
 
 private struct ResultListView : View {
     @Binding var query: String
+    @ObservedObject var userImageFetcher: UserImageFetcher
     let repos: [Repo]
     let users: [User]
     let onCommit: () -> Void
@@ -46,8 +50,8 @@ private struct ResultListView : View {
                     Spacer().frame(width: 10)
                 }
                 List {
-                    repoList
                     userList
+                    repoList
                 }
             }.navigationBarTitle(Text("Search"), displayMode: .inline)
         }
@@ -59,7 +63,9 @@ private struct ResultListView : View {
                 Text("Loading...")
             } else {
                 ForEach(users) { user in
-                    UserRow(user: user)
+                    UserRow(user: user, userImageFetcher: self.userImageFetcher)
+                        .onAppear { self.userImageFetcher.fetchImage(for: user) }
+
                 }
             }
         }
