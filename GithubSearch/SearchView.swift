@@ -33,8 +33,8 @@ struct SearchContainerView: View {
     }
 
     private func fetch() {
-        store.send(.search(action: .search(query: query)))
-//        store.send(.search(query: query))
+        store.send(.search(action: .fetchList(query: query)))
+//        store.send(.fetchList(query: query))
     }
 }
 

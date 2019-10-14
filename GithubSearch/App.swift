@@ -22,7 +22,7 @@ enum SearchMutation {
 }
 
 //enum AppAction: Action {
-//    case search(query: String)
+//    case fetchList(query: String)
 //
 //    func mapToMutation() -> AnyPublisher<AppMutation, Never> {
 //        switch self {
@@ -37,11 +37,11 @@ enum SearchMutation {
 //}
 
 enum SearchAction: Action {
-    case search(query: String)
+    case fetchList(query: String)
     
     func mapToMutation() -> AnyPublisher<SearchMutation, Never> {
         switch self {
-        case let .search(query):
+        case let .fetchList(query):
             return dependencies.githubService
                 .searchPublisher(matching: query)
                 .replaceError(with: [])
