@@ -13,7 +13,7 @@ struct UserListView: View {
     @State private var query: String = "Apple"
 
     var body: some View {
-        SearchView(
+        UserSearchView(
             query: $query,
             users: store.state.userState.searchResult,
             onCommit: fetchUser
@@ -28,7 +28,7 @@ struct UserListView: View {
 
 // MARK: - Reducerやライフサイクルを仕組みを意識しないPureなレイアウト部分
 
-private struct UserRow: View {
+struct UserRow: View {
     let user: User
 
     var body: some View {
@@ -42,7 +42,7 @@ private struct UserRow: View {
 }
 
 
-private struct SearchView : View {
+private struct UserSearchView : View {
     @Binding var query: String
     let users: [User]
     let onCommit: () -> Void

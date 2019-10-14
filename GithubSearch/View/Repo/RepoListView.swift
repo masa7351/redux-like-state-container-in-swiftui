@@ -18,7 +18,7 @@ struct SearchContainerView: View {
     @State private var query: String = "Swift"
 
     var body: some View {
-        SearchView(
+        RepoSearchView(
             query: $query,
             repos: store.state.repoState.searchResult,
             onCommit: fetch
@@ -33,7 +33,7 @@ struct SearchContainerView: View {
 
 // MARK: - Reducerやライフサイクルを仕組みを意識しないPureなレイアウト部分
 
-private struct RepoRow: View {
+struct RepoRow: View {
     let repo: Repo
 
     var body: some View {
@@ -49,7 +49,7 @@ private struct RepoRow: View {
 }
 
 
-private struct SearchView : View {
+private struct RepoSearchView : View {
     @Binding var query: String
     let repos: [Repo]
     let onCommit: () -> Void
