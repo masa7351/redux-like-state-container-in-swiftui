@@ -26,7 +26,6 @@ enum RepoAction: Action {
                 .eraseToAnyPublisher()
         }
     }
-
 }
 
 struct RepoState {

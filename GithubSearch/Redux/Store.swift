@@ -10,6 +10,7 @@ import Combine
 
 protocol Action {
     associatedtype Mutation
+    // Change from Action to Dispatch Availability Action.
     func mapToMutation() -> AnyPublisher<Mutation, Never>
 }
 
@@ -30,10 +31,19 @@ final class Store<AppState, AppAction: Action>: ObservableObject {
         self.appReducer = appReducer
     }
 
-    func send(_ action: AppAction) {
+    // SwiftUI gives us @EnvironmentObject
+    // @EnvironmentObject is set a ancestor view by SceneDelegate.
+    // A state is unique for your app.
+    // You don't need pass state for reduce method.
+    //
+    // general Reducer
+    //  (in) dispatched action + state -> (out) new State
+    func reduce(_ action: AppAction) {
         action
+            // change to Dispatch Availability Action.
             .mapToMutation()
             .receive(on: DispatchQueue.main)
+            // dispatch
             .sink { self.appReducer(&self.state, $0) }
             .store(in: &cancellables)
     }

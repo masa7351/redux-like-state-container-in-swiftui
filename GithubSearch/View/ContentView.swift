@@ -25,8 +25,8 @@ struct ContentView: View {
     }
 
     private func fetch() {
-        store.send(.search(action: .fetchList(query: query)))
-        store.send(.user(action: .fetchList(query: query)))
+        store.reduce(.search(action: .fetchList(query: query)))
+        store.reduce(.user(action: .fetchList(query: query)))
     }
 }
 

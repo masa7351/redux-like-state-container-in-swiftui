@@ -25,19 +25,17 @@ struct UserListView: View {
     }
 
     private func fetchUser() {
-        store.send(.user(action: .fetchList(query: query)))
+        store.reduce(.user(action: .fetchList(query: query)))
     }
 }
 
 // MARK: - Reducerやライフサイクルを仕組みを意識しないPureなレイアウト部分
-
 
 private struct UserSearchView : View {
     @Binding var query: String
     @ObservedObject var imageFetcher: ImageFetcher
     let users: [User]
     let onCommit: () -> Void
-
 
     var body: some View {
         NavigationView {

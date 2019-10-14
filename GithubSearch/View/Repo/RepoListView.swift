@@ -27,7 +27,7 @@ struct SearchContainerView: View {
     }
 
     private func fetch() {
-        store.send(.search(action: .fetchList(query: query)))
+        store.reduce(.search(action: .fetchList(query: query)))
     }
 }
 
@@ -47,7 +47,6 @@ struct RepoRow: View {
         }
     }
 }
-
 
 private struct RepoSearchView : View {
     @Binding var query: String
