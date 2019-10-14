@@ -6,7 +6,6 @@
 //  Copyright © 2019 Majid Jabrayilov. All rights reserved.
 //
 import SwiftUI
-import Combine
 
 // The main idea is dividing your views into two types: Container Views and Rendering Views. The Rendering View is responsible for drawing the content, and that’s all. So basically it should not store the state or handle lifecycle events. It usually renders the data which you pass via the init method.
 

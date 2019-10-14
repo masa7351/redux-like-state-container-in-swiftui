@@ -6,7 +6,7 @@
 //  Copyright © 2019 Majid Jabrayilov. All rights reserved.
 //
 
-import SwiftUI
+import Foundation
 import Combine
 
 struct Repo: Decodable, Identifiable {

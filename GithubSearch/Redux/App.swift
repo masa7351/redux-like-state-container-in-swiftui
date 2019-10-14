@@ -83,7 +83,6 @@ struct SearchState {
 //    }
 //}
 
-
 let appReducer: Reducer<AppState, AppMutation> = { state, mutation in
     switch mutation {
     case let .search(mutation):
@@ -91,8 +90,7 @@ let appReducer: Reducer<AppState, AppMutation> = { state, mutation in
     }
 }
 
-
-let searchReducer: Reducer<SearchState, SearchMutation> = { state, mutation in
+private let searchReducer: Reducer<SearchState, SearchMutation> = { state, mutation in
     switch mutation {
     case let .searchResults(repos):
         state.searchResult = repos
