@@ -64,12 +64,13 @@ struct SearchView : View {
         NavigationView {
             List {
                 TextField("Type something", text: $query, onCommit: onCommit)
-
                 if repos.isEmpty {
                     Text("Loading...")
                 } else {
-                    ForEach(repos) { repo in
-                        RepoRow(repo: repo)
+                    ForEach(repos, id: \.id) { repo in
+                        NavigationLink(destination: DetailView(repo: repo)){
+                            RepoRow(repo: repo)
+                        }
                     }
                 }
             }.navigationBarTitle(Text("Search"))

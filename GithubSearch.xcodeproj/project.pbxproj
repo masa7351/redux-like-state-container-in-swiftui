@@ -17,6 +17,7 @@
 		1CC8AF97232F4C88003758CB /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8AF96232F4C88003758CB /* Store.swift */; };
 		1CC8AF99232F4CF3003758CB /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8AF98232F4CF3003758CB /* App.swift */; };
 		1CC8AF9B232F4D28003758CB /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8AF9A232F4D28003758CB /* Dependencies.swift */; };
+		446A41DC235474CB003B6153 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A41DB235474CB003B6153 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1CC8AF96232F4C88003758CB /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1CC8AF98232F4CF3003758CB /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		1CC8AF9A232F4D28003758CB /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		446A41DB235474CB003B6153 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				1CA1F63D22A817CC00CF6423 /* SearchView.swift */,
+				446A41DB235474CB003B6153 /* DetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CA1F63E22A817CC00CF6423 /* SearchView.swift in Sources */,
+				446A41DC235474CB003B6153 /* DetailView.swift in Sources */,
 				1CC8AF97232F4C88003758CB /* Store.swift in Sources */,
 				1C3152C622A84DBB000F6A69 /* GithubService.swift in Sources */,
 				1CC8AF9B232F4D28003758CB /* Dependencies.swift in Sources */,

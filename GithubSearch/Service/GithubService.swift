@@ -13,8 +13,17 @@ struct Repo: Decodable, Identifiable {
     var id: Int
     let owner: Owner
     let name: String
+    let stargazersCount: Int
     let description: String?
 
+    enum CodingKeys: String, CodingKey {
+        case id
+        case owner
+        case name
+        case stargazersCount = "stargazers_count"
+        case description
+    }
+    
     struct Owner: Decodable {
         let avatar: URL
 
