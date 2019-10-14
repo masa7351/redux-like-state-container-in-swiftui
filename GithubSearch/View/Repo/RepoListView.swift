@@ -18,14 +18,9 @@ struct SearchContainerView: View {
     @State private var query: String = "Swift"
 
     var body: some View {
-//        SearchView(
-//            query: $query,
-//            repos: store.state.searchResult,
-//            onCommit: fetch
-//        ).onAppear(perform: fetch)
         SearchView(
             query: $query,
-            repos: store.state.searchState.searchResult,
+            repos: store.state.repoState.searchResult,
             onCommit: fetch
         ).onAppear(perform: fetch)
 
@@ -33,13 +28,12 @@ struct SearchContainerView: View {
 
     private func fetch() {
         store.send(.search(action: .fetchList(query: query)))
-//        store.send(.fetchList(query: query))
     }
 }
 
 // MARK: - Reducerやライフサイクルを仕組みを意識しないPureなレイアウト部分
 
-struct RepoRow: View {
+private struct RepoRow: View {
     let repo: Repo
 
     var body: some View {
@@ -55,7 +49,7 @@ struct RepoRow: View {
 }
 
 
-struct SearchView : View {
+private struct SearchView : View {
     @Binding var query: String
     let repos: [Repo]
     let onCommit: () -> Void
@@ -67,8 +61,8 @@ struct SearchView : View {
                 if repos.isEmpty {
                     Text("Loading...")
                 } else {
-                    ForEach(repos, id: \.id) { repo in
-                        NavigationLink(destination: DetailView(repo: repo)){
+                    ForEach(repos) { repo in
+                        NavigationLink(destination: RepoDetailView(repo: repo)){
                             RepoRow(repo: repo)
                         }
                     }

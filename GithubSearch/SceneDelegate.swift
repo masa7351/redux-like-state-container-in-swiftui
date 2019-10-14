@@ -17,12 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        let appState: AppState = AppState(searchState: SearchState())
+        let appState: AppState = AppState(repoState: RepoState(), userState: UserState())
         let store = Store<AppState, AppAction>(initialState: appState, appReducer: appReducer)
         let window = UIWindow(windowScene: scene)
         window.rootViewController = UIHostingController(
             rootView: SearchContainerView()
                 .environmentObject(store)
+//            rootView: UserListView()
+//                .environmentObject(store)
+
         )
         self.window = window
         window.makeKeyAndVisible()

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  RepoService.swift
 //  GithubSearch
 //
 //  Created by Majid Jabrayilov on 6/5/19.
@@ -33,11 +33,11 @@ struct Repo: Decodable, Identifiable {
     }
 }
 
-struct SearchResponse: Decodable {
+struct RepoResponse: Decodable {
     let items: [Repo]
 }
 
-class GithubService {
+class RepoService {
     private let session: URLSession
     private let decoder: JSONDecoder
 
@@ -62,7 +62,7 @@ class GithubService {
         return session
             .dataTaskPublisher(for: url)
             .map { $0.data }
-            .decode(type: SearchResponse.self, decoder: decoder)
+            .decode(type: RepoResponse.self, decoder: decoder)
             .map { $0.items }
             .eraseToAnyPublisher()
     }

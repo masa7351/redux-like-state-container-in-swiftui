@@ -1,5 +1,5 @@
 //
-//  DetailView.swift
+//  RepoDetailView.swift
 //  GithubSearch
 //
 //  Created by Masanao Imai on 2019/10/14.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DetailView: View {
+struct RepoDetailView: View {
     var repo: Repo
     private var description: String {
         return repo.description ?? ""
