@@ -47,7 +47,7 @@ private struct UserSearchView : View {
                     Text("Loading...")
                 } else {
                     ForEach(users) { user in
-                        UserRow(user: user, userImageFetcher: self.userImageFetcher)
+                        UserRow(user: user, image: self.userImageFetcher.userImages[user])
                             .onAppear { self.userImageFetcher.fetchImage(for: user) }
                     }
                 }
@@ -58,11 +58,12 @@ private struct UserSearchView : View {
 
 struct UserRow: View {
     let user: User
-    @ObservedObject var userImageFetcher: UserImageFetcher
+    let image: UIImage?
     var body: some View {
         HStack {
-            userImageFetcher.userImages[user].map { image in
-                Image(uiImage: image)
+            // instead of "if let _image = image"
+            image.map { _image in
+                Image(uiImage: _image)
                     .frame(width: 44, height: 44)
                     .aspectRatio(contentMode: .fit)
                     .clipShape(Circle())

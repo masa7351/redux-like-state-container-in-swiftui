@@ -63,7 +63,7 @@ private struct ResultListView : View {
                 Text("Loading...")
             } else {
                 ForEach(users) { user in
-                    UserRow(user: user, userImageFetcher: self.userImageFetcher)
+                    UserRow(user: user, image: self.userImageFetcher.userImages[user])
                         .onAppear { self.userImageFetcher.fetchImage(for: user) }
 
                 }
