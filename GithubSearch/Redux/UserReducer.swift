@@ -9,6 +9,8 @@
 import Foundation
 import Combine
 
+// MARK: - Action
+
 enum UserMutation {
     case searchResults(users: [User])
 }
@@ -28,8 +30,10 @@ enum UserAction: Action {
     }
 }
 
+// MARK: - State
+
 struct UserState {
-    var searchResult: [User] = []
+    fileprivate(set) var searchResult: [User] = []
 }
 
 let userReducer: Reducer<UserState, UserMutation> = { state, mutation in

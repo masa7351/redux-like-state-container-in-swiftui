@@ -43,7 +43,7 @@ final class Store<AppState, AppAction: Action>: ObservableObject {
             // change to Dispatch Availability Action.
             .mapToMutation()
             .receive(on: DispatchQueue.main)
-            // dispatch
+            // dispatch and save to state
             .sink { self.appReducer(&self.state, $0) }
             .store(in: &cancellables)
     }

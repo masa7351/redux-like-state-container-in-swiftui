@@ -9,6 +9,8 @@
 import Foundation
 import Combine
 
+// MARK: - Action
+
 enum AppMutation {
     case search(mutation: RepoMutation)
     case user(mutation: UserMutation)
@@ -34,9 +36,11 @@ enum AppAction: Action {
     }
 }
 
+// MARK: - State
+
 struct AppState {
-    var repoState: RepoState
-    var userState: UserState
+    fileprivate(set) var repoState: RepoState
+    fileprivate(set) var userState: UserState
 }
 
 let appReducer: Reducer<AppState, AppMutation> = { state, mutation in

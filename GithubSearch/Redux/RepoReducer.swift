@@ -9,6 +9,8 @@
 import Foundation
 import Combine
 
+// MARK: - Action
+
 enum RepoMutation {
     case searchResults(repos: [Repo])
 }
@@ -28,8 +30,10 @@ enum RepoAction: Action {
     }
 }
 
+// MARK: - State
+
 struct RepoState {
-    var searchResult: [Repo] = []
+    fileprivate(set) var searchResult: [Repo] = []
 }
 
 let repoReducer: Reducer<RepoState, RepoMutation> = { state, mutation in
