@@ -104,10 +104,10 @@
 		443A3D9523546DA600627E48 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
+				44F4854A2355EEE2004F6F96 /* App */,
+				44F485492355EE8D004F6F96 /* Repo */,
+				44F485482355EE80004F6F96 /* User */,
 				1CC8AF96232F4C88003758CB /* Store.swift */,
-				446A41DF23549AD3003B6153 /* RepoReducer.swift */,
-				446A41E123549B5A003B6153 /* UserReducer.swift */,
-				1CC8AF98232F4CF3003758CB /* App.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -154,6 +154,30 @@
 				446A41E92354B350003B6153 /* ImageFetcher.swift */,
 			);
 			path = NotRedux;
+			sourceTree = "<group>";
+		};
+		44F485482355EE80004F6F96 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				446A41E123549B5A003B6153 /* UserReducer.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		44F485492355EE8D004F6F96 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				446A41DF23549AD3003B6153 /* RepoReducer.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		44F4854A2355EEE2004F6F96 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1CC8AF98232F4CF3003758CB /* App.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
