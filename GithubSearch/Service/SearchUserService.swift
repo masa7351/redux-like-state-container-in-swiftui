@@ -9,17 +9,11 @@
 import Foundation
 import Combine
 
-struct User: Hashable, Identifiable, Decodable {
-    var id: Int64
-    var login: String
-    var avatar_url: URL
+protocol SearchUserService {
+   func searchPublisher(matching query: String) -> AnyPublisher<[User], Error>
 }
 
-struct UserResponse: Decodable {
-    let items: [User]
-}
-
-class SearchUserService {
+class SearchUserServiceImpl : SearchUserService {
     private let session: URLSession
     private let decoder: JSONDecoder
 

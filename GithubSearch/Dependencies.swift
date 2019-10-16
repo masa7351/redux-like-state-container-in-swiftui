@@ -13,5 +13,5 @@ struct Dependencies {
     var searchUserService: SearchUserService
 }
 
-let dependencies = Dependencies(repoService: RepoService(),
-                                searchUserService: SearchUserService())
+let fetchApi = Dependencies(repoService: RepoServiceImpl(),
+                                searchUserService: SearchUserServiceImpl())

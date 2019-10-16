@@ -20,16 +20,16 @@ enum AppAction: Action {
     case search(action: RepoAction)
     case user(action: UserAction)
 
-    func mapToMutation() -> AnyPublisher<AppMutation, Never> {
+    func mapToMutation(dependencies: Dependencies) -> AnyPublisher<AppMutation, Never> {
         switch self {
         case let .search(action):
             return action
-            .mapToMutation()
+            .mapToMutation(dependencies: dependencies)
             .map { AppMutation.search(mutation: $0) }
             .eraseToAnyPublisher()
         case let .user(action):
             return action
-            .mapToMutation()
+            .mapToMutation(dependencies: dependencies)
             .map { AppMutation.user(mutation: $0) }
             .eraseToAnyPublisher()
         }

@@ -18,7 +18,7 @@ enum RepoMutation {
 enum RepoAction: Action {
     case fetchList(query: String)
     
-    func mapToMutation() -> AnyPublisher<RepoMutation, Never> {
+    func mapToMutation(dependencies: Dependencies) -> AnyPublisher<RepoMutation, Never> {
         switch self {
         case let .fetchList(query):
             return dependencies.repoService

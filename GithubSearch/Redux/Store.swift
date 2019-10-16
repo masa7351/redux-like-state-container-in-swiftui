@@ -12,7 +12,7 @@ protocol Action {
     // Mutation is Dispatch Availability Action.
     associatedtype Mutation
     // Change from Action to Dispatch Availability Action.
-    func mapToMutation() -> AnyPublisher<Mutation, Never>
+    func mapToMutation(dependencies: Dependencies) -> AnyPublisher<Mutation, Never>
 }
 
 typealias Reducer<State, Mutation> = (inout State, Mutation) -> Void
@@ -39,10 +39,10 @@ final class Store<AppState, AppAction: Action>: ObservableObject {
     //
     // general Reducer
     //  (in) dispatched action + state -> (out) new State
-    func dispatch(_ action: AppAction) {
+    func dispatch(_ action: AppAction, dependencies: Dependencies = fetchApi) {
         action
             // change to Dispatch Availability Action.
-            .mapToMutation()
+            .mapToMutation(dependencies: dependencies)
             // executing is only on main thread
             .receive(on: DispatchQueue.main)
             // reduce

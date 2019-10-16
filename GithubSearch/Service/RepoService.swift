@@ -9,35 +9,11 @@
 import Foundation
 import Combine
 
-struct Repo: Decodable, Identifiable {
-    var id: Int
-    let owner: Owner
-    let name: String
-    let stargazersCount: Int
-    let description: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id
-        case owner
-        case name
-        case stargazersCount = "stargazers_count"
-        case description
-    }
-    
-    struct Owner: Decodable {
-        let avatar: URL
-
-        enum CodingKeys: String, CodingKey {
-            case avatar = "avatar_url"
-        }
-    }
+protocol RepoService {
+    func searchPublisher(matching query: String) -> AnyPublisher<[Repo], Error>
 }
 
-struct RepoResponse: Decodable {
-    let items: [Repo]
-}
-
-class RepoService {
+class RepoServiceImpl : RepoService {
     private let session: URLSession
     private let decoder: JSONDecoder
 

@@ -18,7 +18,7 @@ enum UserMutation {
 enum UserAction: Action {
     case fetchList(query: String)
     
-    func mapToMutation() -> AnyPublisher<UserMutation, Never> {
+    func mapToMutation(dependencies: Dependencies) -> AnyPublisher<UserMutation, Never> {
         switch self {
         case let .fetchList(query):
             return dependencies.searchUserService

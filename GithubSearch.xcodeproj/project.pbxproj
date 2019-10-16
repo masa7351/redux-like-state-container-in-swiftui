@@ -24,6 +24,8 @@
 		446A41E423549DE7003B6153 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A41E323549DE7003B6153 /* UserListView.swift */; };
 		446A41E82354A452003B6153 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A41E72354A452003B6153 /* ContentView.swift */; };
 		446A41EA2354B350003B6153 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A41E92354B350003B6153 /* ImageFetcher.swift */; };
+		B92C8D412356ECDD00F7ABCE /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C8D402356ECDD00F7ABCE /* Repo.swift */; };
+		B92C8D432356ECE700F7ABCE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C8D422356ECE700F7ABCE /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		446A41E323549DE7003B6153 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		446A41E72354A452003B6153 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		446A41E92354B350003B6153 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
+		B92C8D402356ECDD00F7ABCE /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
+		B92C8D422356ECE700F7ABCE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 				1C59D32222A702B200049F5C /* AppDelegate.swift */,
 				1C59D32422A702B200049F5C /* SceneDelegate.swift */,
 				1CC8AF9A232F4D28003758CB /* Dependencies.swift */,
+				B92C8D3E2356EC8A00F7ABCE /* Model */,
 				443A3D9723546DF500627E48 /* Service */,
 				443A3D9623546DD600627E48 /* View */,
 				44F48547235515EC004F6F96 /* NotRedux */,
@@ -180,6 +185,15 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		B92C8D3E2356EC8A00F7ABCE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B92C8D402356ECDD00F7ABCE /* Repo.swift */,
+				B92C8D422356ECE700F7ABCE /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -259,6 +273,7 @@
 				1CA1F63E22A817CC00CF6423 /* RepoListView.swift in Sources */,
 				446A41DC235474CB003B6153 /* RepoDetailView.swift in Sources */,
 				1CC8AF97232F4C88003758CB /* Store.swift in Sources */,
+				B92C8D432356ECE700F7ABCE /* User.swift in Sources */,
 				1C3152C622A84DBB000F6A69 /* RepoService.swift in Sources */,
 				446A41DE23548FBF003B6153 /* SearchUserService.swift in Sources */,
 				1CC8AF9B232F4D28003758CB /* Dependencies.swift in Sources */,
@@ -267,6 +282,7 @@
 				446A41E023549AD3003B6153 /* RepoReducer.swift in Sources */,
 				446A41EA2354B350003B6153 /* ImageFetcher.swift in Sources */,
 				446A41E82354A452003B6153 /* ContentView.swift in Sources */,
+				B92C8D412356ECDD00F7ABCE /* Repo.swift in Sources */,
 				1CC8AF99232F4CF3003758CB /* App.swift in Sources */,
 				1C59D32522A702B200049F5C /* SceneDelegate.swift in Sources */,
 			);
