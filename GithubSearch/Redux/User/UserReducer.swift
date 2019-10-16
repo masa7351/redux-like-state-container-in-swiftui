@@ -12,7 +12,7 @@ import Combine
 // MARK: - Action
 
 enum UserMutation {
-    case searchResults(users: [User])
+    case searchResults(users: [User], error: Error?)
 }
 
 enum UserAction: Action {
@@ -23,8 +23,8 @@ enum UserAction: Action {
         case let .fetchList(query):
             return dependencies.searchUserService
                 .searchPublisher(matching: query)
-                .replaceError(with: [])
-                .map { UserMutation.searchResults(users: $0) }
+                .map { UserMutation.searchResults(users: $0, error: nil) }
+                .catch { Just(UserMutation.searchResults(users: [], error: $0)) } // handle error
                 .eraseToAnyPublisher()
         }
     }
@@ -34,11 +34,16 @@ enum UserAction: Action {
 
 struct UserState {
     fileprivate(set) var searchResult: [User] = []
+    fileprivate(set) var errorMessage: String = ""
 }
+
+// MARK: - Reducer
 
 let userReducer: Reducer<UserState, UserMutation> = { state, mutation in
     switch mutation {
-    case let .searchResults(users):
-        state.searchResult = users
+    case let .searchResults(_, error) where error != nil:
+        state = UserState(searchResult: state.searchResult, errorMessage: "It occured a some error.")
+    case let .searchResults(users, _):
+        state = UserState(searchResult: users, errorMessage: "")
     }
 }

@@ -36,6 +36,8 @@ struct RepoState {
     fileprivate(set) var searchResult: [Repo] = []
 }
 
+// MARK: - Reducer
+
 let repoReducer: Reducer<RepoState, RepoMutation> = { state, mutation in
     switch mutation {
     case let .searchResults(repos):

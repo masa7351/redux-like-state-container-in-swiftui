@@ -13,13 +13,13 @@ struct ContentView: View {
     // NOTE: This is not the correct Redux architecture.
     @ObservedObject private var imageFetcher = ImageFetcher()
     @State private var query: String = "Swift"
-
     var body: some View {
         ResultListView(
             query: $query,
             imageFetcher: imageFetcher,
             repos: store.state.repoState.searchResult,
             users: store.state.userState.searchResult,
+            errorMessage: store.state.userState.errorMessage,
             onCommit: fetch
         ).onAppear(perform: fetch)
     }
@@ -35,11 +35,15 @@ private struct ResultListView : View {
     @ObservedObject var imageFetcher: ImageFetcher
     let repos: [Repo]
     let users: [User]
+    let errorMessage: String
     let onCommit: () -> Void
 
     var body: some View {
         NavigationView {
             VStack {
+                if !errorMessage.isEmpty {
+                    Text(errorMessage).foregroundColor(.red)
+                }
                 HStack {
                     Spacer().frame(width: 10)
                     TextField("Type something", text: $query, onCommit: onCommit)
@@ -53,7 +57,12 @@ private struct ResultListView : View {
                     userList
                     repoList
                 }
-            }.navigationBarTitle(Text("Search"), displayMode: .inline)
+            }
+            .navigationBarTitle(Text("Search"), displayMode: .inline)
+            .navigationBarItems(trailing:
+                Button(action: { self.onCommit() },
+                       label: { Image(systemName: "star.fill") })
+            )
         }
     }
     

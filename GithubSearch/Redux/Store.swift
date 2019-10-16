@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 protocol Action {
+    // Mutation is Dispatch Availability Action.
     associatedtype Mutation
     // Change from Action to Dispatch Availability Action.
     func mapToMutation() -> AnyPublisher<Mutation, Never>
