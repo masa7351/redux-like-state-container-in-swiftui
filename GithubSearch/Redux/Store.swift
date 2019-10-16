@@ -38,10 +38,11 @@ final class Store<AppState, AppAction: Action>: ObservableObject {
     //
     // general Reducer
     //  (in) dispatched action + state -> (out) new State
-    func reduce(_ action: AppAction) {
+    func dispatch(_ action: AppAction) {
         action
             // change to Dispatch Availability Action.
             .mapToMutation()
+            // executing is only on main thread
             .receive(on: DispatchQueue.main)
             // dispatch and save to state
             .sink { self.appReducer(&self.state, $0) }

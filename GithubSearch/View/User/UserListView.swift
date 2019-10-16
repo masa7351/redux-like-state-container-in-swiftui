@@ -25,7 +25,7 @@ struct UserListView: View {
     }
 
     private func fetchUser() {
-        store.reduce(.user(action: .fetchList(query: query)))
+        store.dispatch(.user(action: .fetchList(query: query)))
     }
 }
 

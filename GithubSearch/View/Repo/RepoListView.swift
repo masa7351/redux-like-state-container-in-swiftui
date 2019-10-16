@@ -27,7 +27,7 @@ struct SearchContainerView: View {
     }
 
     private func fetch() {
-        store.reduce(.search(action: .fetchList(query: query)))
+        store.dispatch(.search(action: .fetchList(query: query)))
     }
 }
 
