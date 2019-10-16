@@ -44,15 +44,7 @@ private struct ResultListView : View {
                 if !errorMessage.isEmpty {
                     Text(errorMessage).foregroundColor(.red)
                 }
-                HStack {
-                    Spacer().frame(width: 10)
-                    TextField("Type something", text: $query, onCommit: onCommit)
-                        .padding(.vertical, 3)
-                        .padding(.horizontal, 10)
-                        .background(Color.gray)
-                        .clipShape(Capsule())
-                    Spacer().frame(width: 10)
-                }
+                searchArea
                 List {
                     userList
                     repoList
@@ -63,6 +55,18 @@ private struct ResultListView : View {
                 Button(action: { self.onCommit() },
                        label: { Image(systemName: "star.fill") })
             )
+        }
+    }
+    
+    var searchArea: some View {
+        HStack {
+            Spacer().frame(width: 10)
+            TextField("Type something", text: $query, onCommit: onCommit)
+                .padding(.vertical, 3)
+                .padding(.horizontal, 10)
+                .background(Color.gray)
+                .clipShape(Capsule())
+            Spacer().frame(width: 10)
         }
     }
     

@@ -45,7 +45,7 @@ final class Store<AppState, AppAction: Action>: ObservableObject {
             .mapToMutation()
             // executing is only on main thread
             .receive(on: DispatchQueue.main)
-            // dispatch and save to state
+            // reduce
             .sink { self.appReducer(&self.state, $0) }
             .store(in: &cancellables)
     }
