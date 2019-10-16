@@ -22,14 +22,17 @@ final class Store<AppState, AppAction: Action>: ObservableObject {
     @Published private(set) var state: AppState
     // Generally, reducer or composition of reducers is the single place where your app mutates the state.
     private let appReducer: Reducer<AppState, AppAction.Mutation>
+    private let dependencies: Dependencies
     private var cancellables: Set<AnyCancellable> = []
 
     init(
         initialState: AppState,
-        appReducer: @escaping Reducer<AppState, AppAction.Mutation>
+        appReducer: @escaping Reducer<AppState, AppAction.Mutation>,
+        dependencies: Dependencies
     ) {
         self.state = initialState
         self.appReducer = appReducer
+        self.dependencies = dependencies
     }
 
     // SwiftUI gives us @EnvironmentObject
@@ -39,10 +42,10 @@ final class Store<AppState, AppAction: Action>: ObservableObject {
     //
     // general Reducer
     //  (in) dispatched action + state -> (out) new State
-    func dispatch(_ action: AppAction, dependencies: Dependencies = fetchApi) {
+    func dispatch(_ action: AppAction) {
         action
             // change to Dispatch Availability Action.
-            .mapToMutation(dependencies: dependencies)
+            .mapToMutation(dependencies: self.dependencies)
             // executing is only on main thread
             .receive(on: DispatchQueue.main)
             // reduce

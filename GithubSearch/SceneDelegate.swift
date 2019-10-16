@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         let appState: AppState = AppState(repoState: RepoState(), userState: UserState())
-        let store = Store<AppState, AppAction>(initialState: appState, appReducer: appReducer)
+        let store = Store<AppState, AppAction>(initialState: appState, appReducer: appReducer, dependencies: fetchApi)
         let window = UIWindow(windowScene: scene)
         window.rootViewController = UIHostingController(
             rootView: ContentView()
