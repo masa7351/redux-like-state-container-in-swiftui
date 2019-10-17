@@ -62,7 +62,8 @@ struct UserRow: View {
             // instead of "if let _image = image"
             image.map { _image in
                 Image(uiImage: _image)
-                    .frame(width: 44, height: 44)
+                    .resizable()
+                    .frame(width: 60, height: 60)
                     .aspectRatio(contentMode: .fit)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.gray, lineWidth: 1))

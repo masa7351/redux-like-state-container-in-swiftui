@@ -53,7 +53,7 @@ private struct ResultListView : View {
             .navigationBarTitle(Text("Search"), displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: { self.onCommit() },
-                       label: { Image(systemName: "star.fill") })
+                       label: { Image(systemName: "arrow.down") })
             )
         }
     }
@@ -64,10 +64,10 @@ private struct ResultListView : View {
             TextField("Type something", text: $query, onCommit: onCommit)
                 .padding(.vertical, 3)
                 .padding(.horizontal, 10)
-                .background(Color.gray)
                 .clipShape(Capsule())
+                .overlay(Capsule().stroke(Color.gray, lineWidth: 1))
             Spacer().frame(width: 10)
-        }
+        }.padding(.vertical, 10)
     }
     
     var userList: some View {
