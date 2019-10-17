@@ -26,6 +26,10 @@
 		446A41EA2354B350003B6153 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A41E92354B350003B6153 /* ImageFetcher.swift */; };
 		B92C8D412356ECDD00F7ABCE /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C8D402356ECDD00F7ABCE /* Repo.swift */; };
 		B92C8D432356ECE700F7ABCE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C8D422356ECE700F7ABCE /* User.swift */; };
+		B9DEC507235853F4006D4407 /* LoadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEC506235853F4006D4407 /* LoadJson.swift */; };
+		B9DEC509235854A6006D4407 /* MockServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEC508235854A6006D4407 /* MockServices.swift */; };
+		B9DEC50B23585AE9006D4407 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = B9DEC50A23585AE9006D4407 /* users.json */; };
+		B9DEC50D23585B11006D4407 /* repositories.json in Resources */ = {isa = PBXBuildFile; fileRef = B9DEC50C23585B11006D4407 /* repositories.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,10 @@
 		446A41E92354B350003B6153 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		B92C8D402356ECDD00F7ABCE /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		B92C8D422356ECE700F7ABCE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B9DEC506235853F4006D4407 /* LoadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJson.swift; sourceTree = "<group>"; };
+		B9DEC508235854A6006D4407 /* MockServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServices.swift; sourceTree = "<group>"; };
+		B9DEC50A23585AE9006D4407 /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
+		B9DEC50C23585B11006D4407 /* repositories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = repositories.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,11 +93,13 @@
 				1C59D32222A702B200049F5C /* AppDelegate.swift */,
 				1C59D32422A702B200049F5C /* SceneDelegate.swift */,
 				1CC8AF9A232F4D28003758CB /* Dependencies.swift */,
+				B9DEC50023585134006D4407 /* Helper */,
 				B92C8D3E2356EC8A00F7ABCE /* Model */,
 				443A3D9723546DF500627E48 /* Service */,
 				443A3D9623546DD600627E48 /* View */,
 				44F48547235515EC004F6F96 /* NotRedux */,
 				443A3D9523546DA600627E48 /* Redux */,
+				B9DEC501235851B5006D4407 /* Resources */,
 				1C59D32A22A702B300049F5C /* Preview Content */,
 				1C59D32822A702B300049F5C /* Assets.xcassets */,
 				1C59D32D22A702B300049F5C /* LaunchScreen.storyboard */,
@@ -130,6 +140,7 @@
 		443A3D9723546DF500627E48 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				B9DEC508235854A6006D4407 /* MockServices.swift */,
 				1C3152C522A84DBB000F6A69 /* RepoService.swift */,
 				446A41DD23548FBF003B6153 /* SearchUserService.swift */,
 			);
@@ -194,6 +205,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B9DEC50023585134006D4407 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				B9DEC506235853F4006D4407 /* LoadJson.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		B9DEC501235851B5006D4407 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B9DEC50C23585B11006D4407 /* repositories.json */,
+				B9DEC50A23585AE9006D4407 /* users.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -256,9 +284,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9DEC50B23585AE9006D4407 /* users.json in Resources */,
 				1C59D32F22A702B300049F5C /* LaunchScreen.storyboard in Resources */,
 				1C59D32C22A702B300049F5C /* Preview Assets.xcassets in Resources */,
 				1C59D32922A702B300049F5C /* Assets.xcassets in Resources */,
+				B9DEC50D23585B11006D4407 /* repositories.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +303,8 @@
 				1CA1F63E22A817CC00CF6423 /* RepoListView.swift in Sources */,
 				446A41DC235474CB003B6153 /* RepoDetailView.swift in Sources */,
 				1CC8AF97232F4C88003758CB /* Store.swift in Sources */,
+				B9DEC507235853F4006D4407 /* LoadJson.swift in Sources */,
+				B9DEC509235854A6006D4407 /* MockServices.swift in Sources */,
 				B92C8D432356ECE700F7ABCE /* User.swift in Sources */,
 				1C3152C622A84DBB000F6A69 /* RepoService.swift in Sources */,
 				446A41DE23548FBF003B6153 /* SearchUserService.swift in Sources */,
