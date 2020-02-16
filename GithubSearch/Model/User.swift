@@ -14,6 +14,8 @@ struct User: Hashable, Identifiable, Decodable {
     var avatar_url: URL
 }
 
-struct UserResponse: Decodable {
-    let items: [User]
+struct UserResponse: Fetchable {
+    var items: [User]
+    static var apiBase: String { "/users" }
 }
+

@@ -24,10 +24,10 @@
 		446A41E423549DE7003B6153 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A41E323549DE7003B6153 /* UserListView.swift */; };
 		446A41E82354A452003B6153 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A41E72354A452003B6153 /* ContentView.swift */; };
 		446A41EA2354B350003B6153 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A41E92354B350003B6153 /* ImageFetcher.swift */; };
+		44EE28A423F947B900BCF82E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE28A323F947B900BCF82E /* APIClient.swift */; };
 		B92C8D412356ECDD00F7ABCE /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C8D402356ECDD00F7ABCE /* Repo.swift */; };
 		B92C8D432356ECE700F7ABCE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C8D422356ECE700F7ABCE /* User.swift */; };
 		B9DEC507235853F4006D4407 /* LoadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEC506235853F4006D4407 /* LoadJson.swift */; };
-		B9DEC509235854A6006D4407 /* MockServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEC508235854A6006D4407 /* MockServices.swift */; };
 		B9DEC50B23585AE9006D4407 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = B9DEC50A23585AE9006D4407 /* users.json */; };
 		B9DEC50D23585B11006D4407 /* repositories.json in Resources */ = {isa = PBXBuildFile; fileRef = B9DEC50C23585B11006D4407 /* repositories.json */; };
 /* End PBXBuildFile section */
@@ -52,10 +52,10 @@
 		446A41E323549DE7003B6153 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		446A41E72354A452003B6153 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		446A41E92354B350003B6153 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
+		44EE28A323F947B900BCF82E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		B92C8D402356ECDD00F7ABCE /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		B92C8D422356ECE700F7ABCE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B9DEC506235853F4006D4407 /* LoadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJson.swift; sourceTree = "<group>"; };
-		B9DEC508235854A6006D4407 /* MockServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServices.swift; sourceTree = "<group>"; };
 		B9DEC50A23585AE9006D4407 /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		B9DEC50C23585B11006D4407 /* repositories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = repositories.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,9 +140,9 @@
 		443A3D9723546DF500627E48 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				B9DEC508235854A6006D4407 /* MockServices.swift */,
 				1C3152C522A84DBB000F6A69 /* RepoService.swift */,
 				446A41DD23548FBF003B6153 /* SearchUserService.swift */,
+				44EE28A323F947B900BCF82E /* APIClient.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -304,7 +304,7 @@
 				446A41DC235474CB003B6153 /* RepoDetailView.swift in Sources */,
 				1CC8AF97232F4C88003758CB /* Store.swift in Sources */,
 				B9DEC507235853F4006D4407 /* LoadJson.swift in Sources */,
-				B9DEC509235854A6006D4407 /* MockServices.swift in Sources */,
+				44EE28A423F947B900BCF82E /* APIClient.swift in Sources */,
 				B92C8D432356ECE700F7ABCE /* User.swift in Sources */,
 				1C3152C622A84DBB000F6A69 /* RepoService.swift in Sources */,
 				446A41DE23548FBF003B6153 /* SearchUserService.swift in Sources */,

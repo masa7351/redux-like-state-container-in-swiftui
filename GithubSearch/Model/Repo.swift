@@ -32,6 +32,7 @@ struct Repo: Decodable, Identifiable {
     }
 }
 
-struct RepoResponse: Decodable {
-    let items: [Repo]
+struct RepoResponse: Fetchable {
+    var items: [Repo]
+    static var apiBase: String { "/repositories" }
 }

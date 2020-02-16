@@ -13,33 +13,25 @@ protocol RepoService {
     func searchPublisher(matching query: String) -> AnyPublisher<[Repo], Error>
 }
 
-class RepoServiceImpl : RepoService {
-    private let session: URLSession
-    private let decoder: JSONDecoder
-
-    init(session: URLSession = .shared, decoder: JSONDecoder = .init()) {
-        self.session = session
-        self.decoder = decoder
+final class RepoServiceImpl: RepoService {
+    private let apiClient: APIClient
+    init(transport: Transport = URLSession.shared) {
+        apiClient = APIClient(transport: transport)
     }
 
     func searchPublisher(matching query: String) -> AnyPublisher<[Repo], Error> {
-        guard
-            var urlComponents = URLComponents(string: "https://api.github.com/search/repositories")
-            else { preconditionFailure("Can't create url components...") }
+        apiClient.fetch(RepoResponse.self, queries: [URLQueryItem(name: "q", value: query)])
+    }
+}
 
-        urlComponents.queryItems = [
-            URLQueryItem(name: "q", value: query)
-        ]
+// MARK: - Test
 
-        guard
-            let url = urlComponents.url
-            else { preconditionFailure("Can't create url from url components...") }
-
-        return session
-            .dataTaskPublisher(for: url)
-            .map { $0.data }
-            .decode(type: RepoResponse.self, decoder: decoder)
-            .map { $0.items }
-            .eraseToAnyPublisher()
+final class TestRepoTransport: Transport {
+    func fetch(for url: URL) -> AnyPublisher<Data, URLError> {
+        let data = loadRawData("repositories.json")
+        return Future<Data, URLError> { callback in
+            callback(.success(data))
+        }
+        .eraseToAnyPublisher()
     }
 }

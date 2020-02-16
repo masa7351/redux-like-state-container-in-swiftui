@@ -13,8 +13,12 @@ struct Dependencies {
     var searchUserService: SearchUserService
 }
 
-let fetchApi = Dependencies(repoService: RepoServiceImpl(),
-                            searchUserService: SearchUserServiceImpl())
+let fetchApi = Dependencies(
+    repoService: RepoServiceImpl(),
+    searchUserService: SearchUserServiceImpl()
+)
 
-let fetchMock = Dependencies(repoService: RepoServiceMock(),
-                             searchUserService: SearchUserServiceMock())
+let fetchMock = Dependencies(
+    repoService: RepoServiceImpl(transport: TestRepoTransport()),
+    searchUserService: SearchUserServiceImpl(transport: TestUserTransport())
+)

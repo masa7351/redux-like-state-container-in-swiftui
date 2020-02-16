@@ -6,40 +6,32 @@
 //  Copyright © 2019 Majid Jabrayilov. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 protocol SearchUserService {
-   func searchPublisher(matching query: String) -> AnyPublisher<[User], Error>
+    func searchPublisher(matching query: String) -> AnyPublisher<[User], Error>
 }
 
-class SearchUserServiceImpl : SearchUserService {
-    private let session: URLSession
-    private let decoder: JSONDecoder
-
-    init(session: URLSession = .shared, decoder: JSONDecoder = .init()) {
-        self.session = session
-        self.decoder = decoder
+final class SearchUserServiceImpl: SearchUserService {
+    private let apiClient: APIClient
+    init(transport: Transport = URLSession.shared) {
+        apiClient = APIClient(transport: transport)
     }
 
     func searchPublisher(matching query: String) -> AnyPublisher<[User], Error> {
-        guard
-            var urlComponents = URLComponents(string: "https://api.github.com/search/users")
-            else { preconditionFailure("Can't create url components...") }
+        apiClient.fetch(UserResponse.self, queries: [URLQueryItem(name: "q", value: query)])
+    }
+}
 
-        urlComponents.queryItems = [
-            URLQueryItem(name: "q", value: query)
-        ]
+// MARK: - Test
 
-        guard
-            let url = urlComponents.url
-            else { preconditionFailure("Can't create url from url components...") }
-
-        return session
-            .dataTaskPublisher(for: url)
-            .map { $0.data }
-            .decode(type: UserResponse.self, decoder: decoder)
-            .map { $0.items }
-            .eraseToAnyPublisher()
+final class TestUserTransport: Transport {
+    func fetch(for url: URL) -> AnyPublisher<Data, URLError> {
+        let data = loadRawData("user.json")
+        return Future<Data, URLError> { callback in
+            callback(.success(data))
+        }
+        .eraseToAnyPublisher()
     }
 }

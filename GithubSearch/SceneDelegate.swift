@@ -22,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let store = Store<AppState, AppAction>(initialState: appState, appReducer: appReducer, dependencies: fetchMock)
         let window = UIWindow(windowScene: scene)
         window.rootViewController = UIHostingController(
-            rootView: ContentView()
+            rootView: SearchContainerView()
+//            rootView: ContentView()
                 .environmentObject(store)
 //            rootView: SearchContainerView()
 //                .environmentObject(store)
